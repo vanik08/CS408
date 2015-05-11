@@ -7,16 +7,6 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 9000;        
 
-//ROUTES
-var router = express.Router();              
-router.use(function(req, res, next) {
-    console.log('Request: ' + req.body + ' has came in.');
-    next(); 
-});
-router.get('/', function(req, res) {
-    res.json({ message: 'Welcome to API' }); 
-});
-app.use('/api', router);
 require("./routes")(app);
 
 
