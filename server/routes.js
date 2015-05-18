@@ -1,3 +1,3 @@
 module.exports = function (app) {
-	require("./api/Thing/thing.route")(app);
+	require("./api/Message/message.route")(app);
 }
