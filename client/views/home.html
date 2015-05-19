@@ -1,0 +1,35 @@
+<h3>Message List</h3>
+<button ng-click="MainCtrl.deleteAllMessages()" class="btn btn-danger">Delete All Messages</button>
+<div id="notifier" ng-show="MainCtrl.doNotify">
+	<p>{{ MainCtrl.notfication }}</p>
+</div>
+<table class="table table-hover table-striped">
+	<thead>
+		<tr>
+			<td>First Name</td>
+			<td>Last Name</td>
+			<td>Date</td>
+			<td>Content</td>
+			<td>Delete</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="m in MainCtrl.message">
+			<td>{{ m.name.first }}</td>
+			<td>{{ m.name.last }}</td>
+			<td>{{ m.date }}</td>
+			<td>{{ m.content }}</td>
+			<td><button ng-click="MainCtrl.deleteMessage(m._id)"><i class="fa fa-trash-o"></i></button></td>
+		</tr>
+	</tbody>
+</table>
+<form class="form-inline">
+	First Name: <input type="text" class="form-control" ng-model="MainCtrl.firstName">
+	Last Name: <input type="text" class="form-control" ng-model="MainCtrl.lastName">
+	Date: <input type="date" class="form-control" ng-model="MainCtrl.date">
+	Message: <input type="text" class="form-control" ng-model="MainCtrl.content">
+	<button ng-click="MainCtrl.sendMessage()" class="btn btn-primary">Send!</button>
+</form>
+
+
+

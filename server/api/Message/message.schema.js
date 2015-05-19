@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var MessageSchema = new Schema({
 	name: { 
-    first: String,
-    last: String
+	    first: String,
+	    last: String
   },
 	date: Date,
 	content: String

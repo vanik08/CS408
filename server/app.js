@@ -13,9 +13,10 @@ require("./routes")(app);
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/myapp');
 
-app.get('*', function(req, res) {
-    res.sendfile('./client/index.html'); // load our public/index.html file
-});
+
+
+app.use(express.static('../client'));
+
 
 // START THE SERVER
 app.listen(port);
