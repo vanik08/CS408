@@ -10,6 +10,8 @@ exports.add = function(req, res) {
 	console.log("POST Request to URL: /api/Message/messages");
 	var message = new Message();
 	message.content = req.body.content;
+  message.name = req.body.name;
+  message.date = req.body.date;
 	message.save(function(err) {	//Save to database
 
 	if(err) res.send(err);
@@ -29,6 +31,8 @@ exports.deleteByID = function(req, res) {
 		_id: req.params.message_id
 	}, function(err, message) {
 		if(err) console.log('error');
-		res.json({message: 'Successfully deleted'});
+		res.json({
+      message: 'Successfully deleted message with id: ' + req.params.message_id
+    });
 	});
 }
