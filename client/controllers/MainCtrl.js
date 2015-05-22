@@ -1,15 +1,17 @@
-app.controller('MainCtrl', function(messageFactory) {
+app.controller('MainCtrl', function(messageFactory, $location) {
 	var vm = this;
+	vm.setActive = isActive;
 	vm.firstName;
 	vm.lastName;
 	vm.date;
 	vm.content;
-	refreshMessages();
 	vm.sendMessage = postMessage;
 	vm.deleteMessage = removeMessage;
 	vm.deleteAllMessages = removeAllMessages;
 	vm.doNotify = true;
 	vm.notification = '';
+
+	refreshMessages();
 
 	function refreshMessages() {
 		messageFactory.getAllMessages(function(data) {
@@ -53,5 +55,8 @@ app.controller('MainCtrl', function(messageFactory) {
 	function notify(message) {
 		vm.notification = message;
 		vm.doNotify = false;
+	}
+	function isActive(route) {
+		return ($location.path() === route);
 	}
 });

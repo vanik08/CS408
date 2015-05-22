@@ -5,7 +5,7 @@ var MessageSchema = new Schema({
 	name: { 
 	    first: String,
 	    last: String
-  },
+  	},
 	date: Date,
 	content: String
 })
