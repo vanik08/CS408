@@ -31,8 +31,8 @@ app.controller('MainCtrl', function(messageFactory, $location) {
 		}
 		messageFactory.postMessage(message, function(res) {
 			console.log(res);
+			refreshMessages();
 		});
-		refreshMessages();
 		vm.doNotify = true;
 		notify('Posted new message');	
 	}
