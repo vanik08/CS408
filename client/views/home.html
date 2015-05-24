@@ -1,30 +1,20 @@
-
-<div id="notifier">
-	<p>{{ MainCtrl.notfication }}</p>
-</div>
-
-
-<div class = "container">
-
+<div class="container container-fluid">
 	<div class="panel panel-primary">
   		<div class="panel-heading">
-   			<h2><i class=" glyphicon glyphicon-list-alt"></i> Message Board</h2>
+   			<i class=" glyphicon glyphicon-list-alt"></i> Message Board
   		</div>
 
   		<div class="panel-body">
     		<form class="form-inline">
     			<div class="row">
-				  <div class="col-xs-4 col-sm-4 col-lg-3">
-				  	<input type="text" class="form-control" ng-model="MainCtrl.firstName" placeholder="First Name">
+				  <div >
+				  	<input class="form-control" type="text" ng-model="MainCtrl.firstName" placeholder="First Name">
 				  </div>
-				  <div class="col-xs-4 col-sm-4 col-lg-3">
-				  	<input type="text" class="form-control" ng-model="MainCtrl.lastName" placeholder="Last Name">
+				  <div >
+				  	<input class="form-control" type="text" ng-model="MainCtrl.lastName" placeholder="Last Name">
 				  </div>
-				  <div class="col-xs-4 col-sm-4 col-lg-3">
-				  	<input type="date" class="form-control" ng-model="MainCtrl.date" placeholder="Date: year-month-day">
-				  	</div>
-				  <div class="col-xs-12 col-sm-12 col-lg-3">
-				  	  Message: <input type="text" class="form-control" ng-model="MainCtrl.content" placeholder="What's Up?"> 
+				  <div >
+				  	 <input type="text" class="form-control" ng-model="MainCtrl.content" placeholder="What's Up?"> 
 				  	<button ng-click="MainCtrl.sendMessage()" class="btn btn-primary">Send!</button>
 				  </div>
 				</div>
@@ -34,35 +24,9 @@
 		<!-- List Group looping with ng-repeat -->
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="m in MainCtrl.message">
-				<h4>{{ m.name.first }} {{ m.name.last }} - {{ m.date | date }} </h4>
-				<h3>{{ m.content }} </h3>
+				<h5>{{ m.name.first }} {{ m.name.last }} - {{ m.date | date }} </h5>
+				<p>{{ m.content }} </p>
 			</li>
 		</ul>	
   	</div>
-
-  	<!-- Delete all message most likely shouldnt be here but for demo purposes? -->
-  	<button ng-click="MainCtrl.deleteAllMessages()" class="btn btn-danger">Delete All Messages</button>
 </div>
-
-
-<!-- <table class="table table-hover table-striped">
-	<thead>
-		<tr>
-			<td>First Name</td>
-			<td>Last Name</td>
-			<td>Date</td>
-			<td>Content</td>
-			<td>Delete</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="m in MainCtrl.message">
-			<td>{{ m.name.first }}</td>
-			<td>{{ m.name.last }}</td>
-			<td>{{ m.date | date }}</td>
-			<td>{{ m.content }}</td>
-			<td><button ng-click="MainCtrl.deleteMessage(m._id)"><i class="fa fa-trash-o"></i></button></td>
-		</tr>
-	</tbody>
-</table> -->
-

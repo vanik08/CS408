@@ -6,7 +6,10 @@ var MessageSchema = new Schema({
 	    first: String,
 	    last: String
   	},
-	date: Date,
+	date: {
+		type: Date, 
+		default: Date.now
+	},
 	content: String
 })
 
