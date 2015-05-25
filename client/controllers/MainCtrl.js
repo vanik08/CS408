@@ -1,4 +1,20 @@
 app.controller('MainCtrl', function(messageFactory, $location) {
+
+	var socketPort = 9001;
+	var socket = io.connect('http://localhost:' + socketPort);
+
+	socket.on('message:save', function (doc) {
+	  console.log('Some message was saved.', doc);
+	  refreshMessages();
+	});
+	socket.on('message:remove', function (doc) {
+	  console.log('Some message was removed.', doc);
+	  refreshMessages();
+	});
+	socket.on('message:deleteAllMessages', function (data) {
+		refreshMessages();
+	});
+
 	var vm = this;
 	vm.setActive = isActive;
 	vm.firstName;
@@ -7,9 +23,10 @@ app.controller('MainCtrl', function(messageFactory, $location) {
 	vm.content;
 	vm.sendMessage = postMessage;
 	vm.deleteMessage = removeMessage;
-	vm.deleteAllMessages = removeAllMessages
+	vm.deleteAllMessages = removeAllMessages;
 	vm.notification = '';
-
+	vm.loggedIn = false;
+	vm.signIn = signIn;
 	refreshMessages();
 
 	function refreshMessages() {
@@ -39,25 +56,20 @@ app.controller('MainCtrl', function(messageFactory, $location) {
 	function removeAllMessages() {
 		messageFactory.removeAllMessages(function(res) {
 			console.log(res);
-		});
+			socket.emit('message:allDeleted', function(data) {
+				console.log(data);
+			});
+		})
 	}
 	function notify(message) {
 		vm.notification = message;
 		vm.doNotify = false;
 	}
+	function signIn() {
+		vm.loggedIn = true;
+	}
 	function isActive(route) {
-		return ($location.path() === route);
+		return $location.path() === route;
 	}
 
-	var socketPort = 9001;
-	var socket = io.connect('http://localhost:' + socketPort);
-
-	socket.on('message:save', function (doc) {
-	  console.log('Some message was saved.', doc);
-	  refreshMessages();
-	});
-	socket.on('message:remove', function (doc) {
-	  console.log('Some message was removed.', doc);
-	  refreshMessages();
-	});
 });

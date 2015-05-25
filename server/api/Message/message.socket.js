@@ -7,6 +7,10 @@ module.exports = function(socket) {
   message.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
+  socket.on('message:allDeleted', function (data) {
+	socket.emit('message:deleteAllMessages');
+	console.log('something happend');
+  });
 }
 
 function onSave(socket, doc, cb) {
@@ -16,5 +20,5 @@ function onSave(socket, doc, cb) {
 
 function onRemove(socket, doc, cb) {
   socket.emit('message:remove', doc);
-  console.log("Message removed");
 }
+

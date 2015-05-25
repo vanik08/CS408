@@ -1,9 +1,8 @@
-<div class="container container-fluid">
-	<div class="panel panel-primary">
+<div class="container-fluid">
+<!-- 	<div class="panel panel-primary">
   		<div class="panel-heading">
    			<i class=" glyphicon glyphicon-list-alt"></i> Message Board
   		</div>
-
   		<div class="panel-body">
     		<form class="form-inline">
     			<div class="row">
@@ -20,13 +19,42 @@
 				</div>
 			</form>
 		</div>
-		
+		 -->
 		<!-- List Group looping with ng-repeat -->
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="m in MainCtrl.message">
-				<h5>{{ m.name.first }} {{ m.name.last }} - {{ m.date | date }} </h5>
-				<p>{{ m.content }} </p>
-			</li>
-		</ul>	
-  	</div>
+	<div class="row" ng-show="MainCtrl.loggedIn">
+		<div class="col-md-1"></div>
+		<div id="message-app-container" class="col-md-10">
+			<div class="panel panel-primary">
+				<div class="panel-heading"><i class=" glyphicon glyphicon-list-alt"></i> Welcome {{MainCtrl.firstName}} {{MainCtrl.lastName}}</div>
+				<div class="panel-body">
+					<form class="form-inline"><div id="messageInput" class="row">
+						<input type="text" class="form-control" ng-model="MainCtrl.content" placeholder="Type Message"> 
+						<button ng-click="MainCtrl.sendMessage()" class="btn btn-primary">Send!</button>
+					</div></form>
+					<ul class="list-group row">
+						<li class="list-group-item" ng-repeat="m in MainCtrl.message" ng-animate="slide">
+						<h5>{{ m.name.first }} {{ m.name.last }} - {{ m.date | date }} </h5>
+						<p>{{ m.content }} </p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+
+	<div class="row" ng-hide="MainCtrl.loggedIn">
+		<div class="col-md-4"></div>
+		<form><div id="loggin-container" class="col-md-4">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Log In</div>
+			  <div class="panel-body">
+			    <input class="form-control" type="text" ng-model="MainCtrl.firstName" placeholder="First Name">
+			    <input class="form-control" type="text" ng-model="MainCtrl.lastName" placeholder="Last Name">
+			    <button class="btn btn-primary" ng-click="MainCtrl.signIn()">Enter</button>
+			  </div>
+			</div>
+		</div></form>
+		<div class="col-md-4"></div>
+	</div>
 </div>
