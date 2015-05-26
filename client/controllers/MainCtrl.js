@@ -46,6 +46,7 @@ app.controller('MainCtrl', function(messageFactory, $location) {
 		}
 		messageFactory.postMessage(message, function(res) {
 			console.log(res);
+			vm.content = '';
 		});
 	}
 	function removeMessage(id) {

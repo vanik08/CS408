@@ -11,6 +11,20 @@ body {
 	margin-top: 5px;
 	width: 100%;
 }
+#messageInput {
+	padding: 5px;
+}
+#messageInput button {
+	margin-top: 5px;
+	width: 100%;
+}
 #messageInput input {
-	width: 90%;
+	width: 100%;
+}
+a {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	padding: 20px;
+	margin: 0;
 }

@@ -27,9 +27,9 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading"><i class=" glyphicon glyphicon-list-alt"></i> Welcome {{MainCtrl.firstName}} {{MainCtrl.lastName}}</div>
 				<div class="panel-body">
-					<form class="form-inline"><div id="messageInput" class="row">
-						<input type="text" class="form-control" ng-model="MainCtrl.content" placeholder="Type Message"> 
-						<button ng-click="MainCtrl.sendMessage()" class="btn btn-primary">Send!</button>
+					<form name="inputForm" class="form-inline"><div id="messageInput" class="row">
+						<input type="text" class="form-control" ng-model="MainCtrl.content" placeholder="Type Message" ng-maxlength="200" required> 
+						<button ng-click="MainCtrl.sendMessage()" class="btn btn-success" ng-disabled="inputForm.$invalid">Send!</button>
 					</div></form>
 					<ul class="list-group row">
 						<li class="list-group-item" ng-repeat="m in MainCtrl.message" ng-animate="slide">
@@ -57,4 +57,5 @@
 		</div></form>
 		<div class="col-md-4"></div>
 	</div>
+	<a ui-sref="admin"></a>
 </div>

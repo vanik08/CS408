@@ -18,9 +18,9 @@ exports.add = function(req, res) {
 	})
 }
 exports.delete = function(req, res) {
-	Message.remove({_id}, function(err, data) {
-		res.json({mesage: 'All messages have been deleted'});
-	});
+	// Message.remove({_id}, function(err, data) {
+	// 	res.json({mesage: 'All messages have been deleted'});
+	// });
 }
 exports.deleteByID = function(req, res) {
 	console.log("DELETE Request to URL: /api/Message/messages/" + req.params.message_id);
