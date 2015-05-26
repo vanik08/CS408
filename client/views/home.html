@@ -1,29 +1,7 @@
 <div class="container-fluid">
-<!-- 	<div class="panel panel-primary">
-  		<div class="panel-heading">
-   			<i class=" glyphicon glyphicon-list-alt"></i> Message Board
-  		</div>
-  		<div class="panel-body">
-    		<form class="form-inline">
-    			<div class="row">
-				  <div >
-				  	<input class="form-control" type="text" ng-model="MainCtrl.firstName" placeholder="First Name">
-				  </div>
-				  <div >
-				  	<input class="form-control" type="text" ng-model="MainCtrl.lastName" placeholder="Last Name">
-				  </div>
-				  <div >
-				  	 <input type="text" class="form-control" ng-model="MainCtrl.content" placeholder="What's Up?"> 
-				  	<button ng-click="MainCtrl.sendMessage()" class="btn btn-primary">Send!</button>
-				  </div>
-				</div>
-			</form>
-		</div>
-		 -->
-		<!-- List Group looping with ng-repeat -->
 	<div class="row" ng-show="MainCtrl.loggedIn">
-		<div class="col-md-1"></div>
-		<div id="message-app-container" class="col-md-10">
+		<div class="col-md-3 col-sm-1"></div>
+		<div id="message-app-container" class="col-md-6 col-sm-10">
 			<div class="panel panel-primary">
 				<div class="panel-heading"><i class=" glyphicon glyphicon-list-alt"></i> Welcome {{MainCtrl.firstName}} {{MainCtrl.lastName}}</div>
 				<div class="panel-body">
@@ -40,7 +18,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-1"></div>
+		<div class="col-sm-1 col-md-3"></div>
 	</div>
 
 	<div class="row" ng-hide="MainCtrl.loggedIn">
